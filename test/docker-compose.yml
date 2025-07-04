@@ -1,0 +1,13 @@
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    container_name: test-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: rootsll
+      MYSQL_PASSWORD: root1234
+    ports:
+      - "3308:3306"
