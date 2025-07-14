@@ -2,27 +2,43 @@ package main
 
 import (
 	"fmt"
-	"test/tree"
+	"test/list"
 )
 
 func main() {
-	root := &tree.Nodelist{Val: 1}
-    root.Left = &tree.Nodelist{Val: 2}
-    root.Right = &tree.Nodelist{Val: 3}
-    root.Left.Left = &tree.Nodelist{Val: 4}
-    root.Left.Right = &tree.Nodelist{Val: 5}
-    root.Right.Left = &tree.Nodelist{Val: 6}
-    root.Right.Right = &tree.Nodelist{Val: 7}
-    root.Left.Left.Left = &tree.Nodelist{Val: 8}
-    root.Left.Left.Right = &tree.Nodelist{Val: 9}
-    root.Right.Right.Left = &tree.Nodelist{Val: 10}
-    root.Right.Right.Right = &tree.Nodelist{Val: 11}
+	l1 := &list.ListNode{
+        Val: 1,
+        Freq: 0,
+    }
 
-	pre := tree.Preorder(root)
-	in := tree.Inorder(root)
-	post := tree.Postorder(root)
+    l2 := &list.ListNode{
+        Val: 2,
+        Freq: 0,
+    }
 
-	fmt.Println(pre)
-	fmt.Println(in)
-	fmt.Println(post)
+    l3 := &list.ListNode{
+        Val: 3,
+        Freq: 0,
+    }
+
+    l4 := &list.ListNode{
+        Val: 4,
+        Freq: 0,
+    }
+    l1.Next = l2
+    l2.Pre = l1
+    l2.Next = l3
+    l3.Pre = l2
+    l3.Next = l4
+    l4.Pre = l3
+
+    node := list.Visited(l1, 2)
+    node = list.Visited(node, 3)
+    node = list.Visited(node, 4)
+    node = list.Visited(node, 4)
+    //node = list.Visited(node, 3)
+    for node != nil {
+        fmt.Println(node.Val)
+        node = node.Next
+    }
 }
