@@ -1,5 +1,8 @@
 package list
 
+/*
+** 将双链表中的结点，根据Frep（访问数）进行排序
+*/
 func Visited(list *ListNode, num int) *ListNode {
 	result := list
 	for list != nil {

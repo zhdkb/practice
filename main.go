@@ -2,43 +2,21 @@ package main
 
 import (
 	"fmt"
-	"test/list"
+	"test/tree"
 )
 
 func main() {
-	l1 := &list.ListNode{
-        Val: 1,
-        Freq: 0,
-    }
+	root := &tree.TreeNode{Val: 1}
+	root.Left = &tree.TreeNode{Val: 2}
+	root.Right = &tree.TreeNode{Val: 3}
+	root.Left.Left = &tree.TreeNode{Val: 4}
+	root.Left.Right = &tree.TreeNode{Val: 5}
+	root.Right.Right = &tree.TreeNode{Val: 6}
+	root.Left.Right.Left = &tree.TreeNode{Val: 7}
+    root.Left.Right.Left.Left = &tree.TreeNode{Val: 8}
+    root.Left.Right.Left.Left.Left = &tree.TreeNode{Val: 9}
+    root.Left.Right.Left.Left.Left.Left = &tree.TreeNode{Val: 10}
 
-    l2 := &list.ListNode{
-        Val: 2,
-        Freq: 0,
-    }
-
-    l3 := &list.ListNode{
-        Val: 3,
-        Freq: 0,
-    }
-
-    l4 := &list.ListNode{
-        Val: 4,
-        Freq: 0,
-    }
-    l1.Next = l2
-    l2.Pre = l1
-    l2.Next = l3
-    l3.Pre = l2
-    l3.Next = l4
-    l4.Pre = l3
-
-    node := list.Visited(l1, 2)
-    node = list.Visited(node, 3)
-    node = list.Visited(node, 4)
-    node = list.Visited(node, 4)
-    //node = list.Visited(node, 3)
-    for node != nil {
-        fmt.Println(node.Val)
-        node = node.Next
-    }
+    result := tree.GetLeafNodes(root)
+    fmt.Println(result)
 }

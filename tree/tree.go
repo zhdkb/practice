@@ -1,13 +1,13 @@
 package tree
 
-type Nodelist struct {
+type TreeNode struct {
 	Val         int
-	Left, Right *Nodelist
+	Left, Right *TreeNode
 }
 
-func Preorder(root *Nodelist) []int {
+func Preorder(root *TreeNode) []int {
 	result := make([]int, 0)
-	store := []*Nodelist{root}
+	store := []*TreeNode{root}
 
 	for len(store) != 0 {
 		node := store[len(store) - 1]
@@ -24,9 +24,9 @@ func Preorder(root *Nodelist) []int {
 	return result
 }
 
-func Inorder(root *Nodelist) []int {
+func Inorder(root *TreeNode) []int {
 	result := make([]int, 0)
-	store := make([]*Nodelist, 0)
+	store := make([]*TreeNode, 0)
 
 	for root != nil || len(store) != 0 {
 		for root != nil {
@@ -43,10 +43,10 @@ func Inorder(root *Nodelist) []int {
 	return result
 }
 
-func Postorder(root *Nodelist) []int {
+func Postorder(root *TreeNode) []int {
 	result := make([]int, 0)
-	store := []*Nodelist{root}
-	var pre *Nodelist
+	store := []*TreeNode{root}
+	var pre *TreeNode
 
 	for len(store) != 0 {
 		node := store[len(store) - 1]
