@@ -2,21 +2,19 @@ package main
 
 import (
 	"fmt"
-	"test/tree"
+	"test/list"
 )
 
 func main() {
-	root := &tree.TreeNode{Val: 1}
-	root.Left = &tree.TreeNode{Val: 2}
-	root.Right = &tree.TreeNode{Val: 3}
-	root.Left.Left = &tree.TreeNode{Val: 4}
-	root.Left.Right = &tree.TreeNode{Val: 5}
-	root.Right.Right = &tree.TreeNode{Val: 6}
-	root.Left.Right.Left = &tree.TreeNode{Val: 7}
-    root.Left.Right.Left.Left = &tree.TreeNode{Val: 8}
-    root.Left.Right.Left.Left.Left = &tree.TreeNode{Val: 9}
-    root.Left.Right.Left.Left.Left.Left = &tree.TreeNode{Val: 10}
+	list1 := &list.ListNode{Val: 5}
+	list1.Next = &list.ListNode{Val: 3}
+	list1.Next.Next = &list.ListNode{Val: 2}
+	list1.Next.Next.Next = &list.ListNode{Val: 4}
+	list1.Next.Next.Next.Next = &list.ListNode{Val: 1}
+	result := list.DoMergeSort(list1)
 
-    result := tree.GetLeafNodes(root)
-    fmt.Println(result)
+	for result != nil {
+		fmt.Println(result.Val)
+		result = result.Next
+	}
 }
